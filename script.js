@@ -14,12 +14,12 @@
   //    Exemplo: <span class="estrelas" data-nota="4"></span>  ->  ★★★★☆
   document.querySelectorAll(".estrelas[data-nota]").forEach(function (el) {
     var texto = el.getAttribute("data-nota");
-    if (texto === "") return; // sem nota: deixa vazio
+    if (texto === "") return;
     var nota = Math.max(0, Math.min(5, parseInt(texto, 10) || 0));
     el.textContent = "★".repeat(nota) + "☆".repeat(5 - nota);
   });
 
-  // 3) Preenche "ultima atualizacao" com a data de modificação da página
+  // 3) Preenche "última atualização" com a data de modificação da página
   var alvo = document.getElementById("atualizado");
   if (alvo && document.lastModified) {
     var d = new Date(document.lastModified);
@@ -29,4 +29,16 @@
       alvo.textContent = dd + "/" + mm + "/" + d.getFullYear();
     }
   }
+
+  // 4) Links externos abrem em nova aba
+  document.querySelectorAll("a[href^='http']").forEach(function (a) {
+    if (a.hostname !== window.location.hostname) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    }
+  });
+
+  // 5) Ano atual no rodapé: <span id="ano"></span>
+  var ano = document.getElementById("ano");
+  if (ano) ano.textContent = new Date().getFullYear();
 })();
