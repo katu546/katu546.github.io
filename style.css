@@ -10,7 +10,6 @@
            "Liberation Mono", "DejaVu Sans Mono", monospace;
   --tamanho: 16px;
   --altura-linha: 1.6;
-  --largura: 72ch;
 }
 
 /* ===== Base ===== */
@@ -64,15 +63,13 @@ nav .sep {
   margin: 0 8px;
 }
 
-/* página atual (marcada pelo script.js) */
 nav a.atual {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* ===== Conteúdo ===== */
+/* ===== Conteúdo (largura total) ===== */
 main {
-  max-width: var(--largura);
   padding: 0 12px 48px;
 }
 
@@ -97,7 +94,7 @@ p {
   color: var(--texto);
 }
 
-/* ===== Bloco de links (negrito, um por linha) ===== */
+/* ===== Bloco de links ===== */
 .links a {
   display: block;
   font-weight: bold;
@@ -115,7 +112,6 @@ p {
   margin-bottom: 6px;
 }
 
-/* estrelas geradas pelo script.js a partir de data-nota="0..5" */
 .estrelas {
   letter-spacing: 2px;
   margin-right: 8px;
@@ -141,15 +137,35 @@ p {
   object-fit: contain;
 }
 
-/* ===== Diário ===== */
+/* ===== Diário (data no canto direito da página) ===== */
 .entrada {
+  position: relative;
   margin-bottom: 32px;
+  padding-top: 4px;
+}
+
+.entrada .data,
+.entrada .data a {
+  color: var(--texto-suave);
+  text-decoration: none;
+  text-shadow: none;
 }
 
 .entrada .data {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: block;
-  color: var(--texto-suave);
-  margin-bottom: 4px;
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.entrada h2,
+.entrada h3 {
+  padding-right: 22ch;
 }
 
 /* ===== Espaços reservados discretos ===== */
@@ -159,7 +175,6 @@ p {
 
 /* ===== Rodapé ===== */
 footer {
-  max-width: var(--largura);
   padding: 12px 12px 32px;
   border-top: 1px solid var(--linha);
   color: var(--placeholder);
@@ -167,15 +182,20 @@ footer {
 
 /* ===== Celulares ===== */
 @media (max-width: 600px) {
-  :root {
-    --tamanho: 16px; /* 16px evita zoom automático no iPhone */
-  }
-
   h2 {
     font-size: 1.15em;
   }
 
   section {
     margin-top: 32px;
+  }
+
+  .entrada {
+    padding-top: 1.6em;
+  }
+
+  .entrada h2,
+  .entrada h3 {
+    padding-right: 0;
   }
 }
