@@ -1,10 +1,11 @@
-/* ===== Variáveis ===== */
+/* ===== Variáveis (fáceis de alterar) ===== */
 :root {
   --fundo: #000;
   --texto: #dcdcdc;
   --texto-suave: #a8a8a8;
   --placeholder: #8a8a8a;
   --linha: #333;
+  --glow: rgba(230, 230, 230, 0.55);
   --fonte: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas,
            "Liberation Mono", "DejaVu Sans Mono", monospace;
   --tamanho: 16px;
@@ -18,7 +19,6 @@
   animation: none !important;
   transition: none !important;
   box-shadow: none !important;
-  text-shadow: none !important;
 }
 
 html {
@@ -39,15 +39,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Links ===== */
+/* ===== Links com glow ===== */
 a {
   color: var(--texto);
   text-decoration: none;
+  text-shadow: 0 0 4px var(--glow);
 }
+
 a:hover,
 a:focus-visible {
   text-decoration: underline;
   text-underline-offset: 3px;
+  text-shadow: 0 0 6px var(--glow), 0 0 12px var(--glow);
 }
 
 /* ===== Cabeçalho / navegação ===== */
@@ -55,10 +58,13 @@ header {
   padding: 8px 12px;
   border-bottom: 1px solid var(--linha);
 }
+
 nav .sep {
   color: var(--texto-suave);
   margin: 0 8px;
 }
+
+/* página atual (marcada pelo script.js) */
 nav a.atual {
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -69,24 +75,29 @@ main {
   max-width: var(--largura);
   padding: 0 12px 48px;
 }
+
 section {
   margin-top: 40px;
 }
+
 section:first-child {
   margin-top: 28px;
 }
+
 h2 {
   margin: 0 0 14px;
   font-size: 1.2em;
   line-height: 1.4;
   font-weight: bold;
+  color: var(--texto);
 }
+
 p {
   margin: 0 0 1em;
   color: var(--texto);
 }
 
-/* ===== Links em bloco ===== */
+/* ===== Bloco de links (negrito, um por linha) ===== */
 .links a {
   display: block;
   font-weight: bold;
@@ -99,9 +110,12 @@ p {
   margin: 0;
   padding: 0;
 }
+
 .lista li {
   margin-bottom: 6px;
 }
+
+/* estrelas geradas pelo script.js a partir de data-nota="0..5" */
 .estrelas {
   letter-spacing: 2px;
   margin-right: 8px;
@@ -113,12 +127,14 @@ p {
   margin: 0;
   padding: 0;
 }
+
 .itens li {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 6px;
 }
+
 .itens img {
   width: 18px;
   height: 18px;
@@ -129,13 +145,14 @@ p {
 .entrada {
   margin-bottom: 32px;
 }
+
 .entrada .data {
   display: block;
   color: var(--texto-suave);
   margin-bottom: 4px;
 }
 
-/* ===== Discretos ===== */
+/* ===== Espaços reservados discretos ===== */
 .vazio {
   color: var(--placeholder);
 }
@@ -151,11 +168,13 @@ footer {
 /* ===== Celulares ===== */
 @media (max-width: 600px) {
   :root {
-    --tamanho: 16px; /* não diminua: 16px evita zoom automático no iPhone */
+    --tamanho: 16px; /* 16px evita zoom automático no iPhone */
   }
+
   h2 {
     font-size: 1.15em;
   }
+
   section {
     margin-top: 32px;
   }
