@@ -1,13 +1,15 @@
-/* ===== Variáveis (fáceis de alterar) ===== */
+/* ===== Variáveis ===== */
 :root {
   --fundo: #000;
-  --texto: #e6e6e6;
-  --texto-suave: #b5b5b5;
-  --placeholder: #555;
+  --texto: #dcdcdc;
+  --texto-suave: #a8a8a8;
+  --placeholder: #8a8a8a;
   --linha: #333;
-  --fonte: "Courier New", Courier, monospace;
-  --tamanho: 14px;
-  --altura-linha: 20px;
+  --fonte: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas,
+           "Liberation Mono", "DejaVu Sans Mono", monospace;
+  --tamanho: 16px;
+  --altura-linha: 1.6;
+  --largura: 72ch;
 }
 
 /* ===== Base ===== */
@@ -21,6 +23,7 @@
 
 html {
   background: var(--fundo);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -31,64 +34,63 @@ body {
   font-family: var(--fonte);
   font-size: var(--tamanho);
   line-height: var(--altura-linha);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===== Links discretos ===== */
+/* ===== Links ===== */
 a {
   color: var(--texto);
   text-decoration: none;
 }
-
-a:hover {
+a:hover,
+a:focus-visible {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ===== Cabeçalho / navegação ===== */
 header {
-  padding: 4px 7px 6px;
+  padding: 8px 12px;
   border-bottom: 1px solid var(--linha);
 }
-
 nav .sep {
   color: var(--texto-suave);
-  margin: 0 6px;
+  margin: 0 8px;
 }
-
-/* página atual (marcada pelo script.js) */
 nav a.atual {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ===== Conteúdo ===== */
 main {
-  padding: 0 7px 40px;
+  max-width: var(--largura);
+  padding: 0 12px 48px;
 }
-
 section {
-  margin-top: 36px;
+  margin-top: 40px;
 }
-
 section:first-child {
   margin-top: 28px;
 }
-
 h2 {
   margin: 0 0 14px;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 1.2em;
+  line-height: 1.4;
   font-weight: bold;
-  color: var(--texto);
 }
-
 p {
-  margin: 0;
+  margin: 0 0 1em;
   color: var(--texto);
 }
 
-/* ===== Bloco de links (negrito, um por linha) ===== */
+/* ===== Links em bloco ===== */
 .links a {
   display: block;
   font-weight: bold;
+  padding: 2px 0;
 }
 
 /* ===== Listas ===== */
@@ -97,32 +99,51 @@ p {
   margin: 0;
   padding: 0;
 }
-
-/* estrelas geradas pelo script.js a partir de data-nota="0..5" */
+.lista li {
+  margin-bottom: 6px;
+}
 .estrelas {
-  letter-spacing: 1px;
-  margin-right: 6px;
+  letter-spacing: 2px;
+  margin-right: 8px;
+}
+
+/* ===== Lista com ícones ===== */
+.itens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.itens li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.itens img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 /* ===== Diário ===== */
 .entrada {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
-
 .entrada .data {
   display: block;
   color: var(--texto-suave);
   margin-bottom: 4px;
 }
 
-/* ===== Espaços reservados discretos ===== */
+/* ===== Discretos ===== */
 .vazio {
   color: var(--placeholder);
 }
 
 /* ===== Rodapé ===== */
 footer {
-  padding: 10px 7px 30px;
+  max-width: var(--largura);
+  padding: 12px 12px 32px;
   border-top: 1px solid var(--linha);
   color: var(--placeholder);
 }
@@ -130,35 +151,12 @@ footer {
 /* ===== Celulares ===== */
 @media (max-width: 600px) {
   :root {
-    --tamanho: 13px;
-    --altura-linha: 19px;
+    --tamanho: 16px; /* não diminua: 16px evita zoom automático no iPhone */
   }
-
   h2 {
-    font-size: 16px;
+    font-size: 1.15em;
   }
-
   section {
-    margin-top: 28px;
+    margin-top: 32px;
   }
-  
-/* ===== Lista com ícones ===== */
-.itens {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.itens li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 22px;
-  margin-bottom: 4px;
-}
-
-.itens img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
 }
