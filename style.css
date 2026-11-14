@@ -36,6 +36,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0 16px;
 }
 
 /* ===== Links com glow ===== */
@@ -54,7 +55,7 @@ a:focus-visible {
 
 /* ===== Cabeçalho / navegação ===== */
 header {
-  padding: 8px 12px;
+  padding: 8px 0;
   border-bottom: 1px solid var(--linha);
 }
 
@@ -70,7 +71,7 @@ nav a.atual {
 
 /* ===== Conteúdo (largura total) ===== */
 main {
-  padding: 0 12px 48px;
+  padding: 0 0 48px;
 }
 
 section {
@@ -137,29 +138,26 @@ p {
   object-fit: contain;
 }
 
-/* ===== Diário (data no canto direito, na linha do título) ===== */
-.com-data {
+/* ===== Diário (título à esquerda, data à direita) ===== */
+.topo {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;          /* no celular a data desce para baixo do título */
+  gap: 0 16px;
 }
 
-.data-dir {
-  margin-left: auto;
-  font-size: 0.9rem;
-  font-weight: normal;
+.topo h2 {
+  margin: 0 0 14px;
+}
+
+.topo .data {
+  margin-top: 0.2em;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--texto-suave);
   text-shadow: none;
   white-space: nowrap;
-}
-
-/* plano B: se não achar um título, a data fica sozinha à direita */
-.data-linha {
-  text-align: right;
-  color: var(--texto-suave);
-  font-size: 0.9rem;
 }
 
 /* ===== Espaços reservados discretos ===== */
@@ -169,7 +167,7 @@ p {
 
 /* ===== Rodapé ===== */
 footer {
-  padding: 12px 12px 32px;
+  padding: 12px 0 32px;
   border-top: 1px solid var(--linha);
   color: var(--placeholder);
 }
