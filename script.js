@@ -41,30 +41,4 @@
   // 5) Ano atual no rodapé: <span id="ano"></span>
   var ano = document.getElementById("ano");
   if (ano) ano.textContent = new Date().getFullYear();
-
-  // 6) Diário: acha a data (dd/mm/aaaa - hh:mm:ss) e joga para o canto direito,
-  //    na mesma linha do título. Não depende de nome de classe.
-  var reData = /^\s*\d{2}\/\d{2}\/\d{4}\s*-\s*\d{2}:\d{2}:\d{2}\s*$/;
-  var raiz = document.querySelector("main") || document.body;
-
-  Array.prototype.slice.call(raiz.querySelectorAll("*")).forEach(function (el) {
-    if (el.children.length !== 0 || !reData.test(el.textContent)) return;
-
-    // procura o título logo antes da data (ou antes do bloco que a contém)
-    var titulo = el.previousElementSibling;
-    if (!titulo && el.parentElement && el.parentElement !== raiz) {
-      titulo = el.parentElement.previousElementSibling;
-    }
-
-    if (titulo && /^H[1-6]$/.test(titulo.tagName)) {
-      var span = document.createElement("span");
-      span.className = "data-dir";
-      span.textContent = el.textContent.trim();
-      titulo.classList.add("com-data");
-      titulo.appendChild(span);
-      el.remove();
-    } else {
-      el.classList.add("data-linha");
-    }
-  });
 })();
