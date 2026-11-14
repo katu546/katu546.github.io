@@ -137,35 +137,29 @@ p {
   object-fit: contain;
 }
 
-/* ===== Diário (data no canto direito da página) ===== */
-.entrada {
-  position: relative;
-  margin-bottom: 32px;
-  padding-top: 4px;
+/* ===== Diário (data no canto direito, na linha do título) ===== */
+.com-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
 }
 
-.entrada .data,
-.entrada .data a {
+.data-dir {
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: normal;
   color: var(--texto-suave);
-  text-decoration: none;
   text-shadow: none;
-}
-
-.entrada .data {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  margin: 0;
-  font-size: 0.9em;
-  line-height: 1.6;
   white-space: nowrap;
-  text-align: right;
 }
 
-.entrada h2,
-.entrada h3 {
-  padding-right: 22ch;
+/* plano B: se não achar um título, a data fica sozinha à direita */
+.data-linha {
+  text-align: right;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
 }
 
 /* ===== Espaços reservados discretos ===== */
@@ -188,14 +182,5 @@ footer {
 
   section {
     margin-top: 32px;
-  }
-
-  .entrada {
-    padding-top: 1.6em;
-  }
-
-  .entrada h2,
-  .entrada h3 {
-    padding-right: 0;
   }
 }
