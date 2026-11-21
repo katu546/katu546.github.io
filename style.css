@@ -5,6 +5,7 @@
   --texto-suave: #a8a8a8;
   --placeholder: #8a8a8a;
   --linha: #333;
+  --separador: rgba(255, 255, 255, 0.18); /* intensidade da barra entre entradas */
   --glow: rgba(230, 230, 230, 0.55);
   --fonte: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas,
            "Liberation Mono", "DejaVu Sans Mono", monospace;
@@ -27,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 16px;
   background: var(--fundo);
   color: var(--texto);
   font-family: var(--fonte);
@@ -36,7 +37,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 0 16px;
 }
 
 /* ===== Links com glow ===== */
@@ -93,6 +93,13 @@ h2 {
 p {
   margin: 0 0 1em;
   color: var(--texto);
+}
+
+/* ===== Separador entre as entradas (barra cinza transparente) ===== */
+main section + section {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--separador);
 }
 
 /* ===== Bloco de links ===== */
@@ -178,7 +185,8 @@ footer {
     font-size: 1.15em;
   }
 
-  section {
-    margin-top: 32px;
+  main section + section {
+    margin-top: 24px;
+    padding-top: 24px;
   }
 }
