@@ -5,7 +5,7 @@
   --texto-suave: #a8a8a8;
   --placeholder: #8a8a8a;
   --linha: #333;
-  --separador: rgba(255, 255, 255, 0.18); /* intensidade da barra entre entradas */
+  --separador: rgba(255, 255, 255, 0.32); /* intensidade da barra entre entradas */
   --glow: rgba(230, 230, 230, 0.55);
   --fonte: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas,
            "Liberation Mono", "DejaVu Sans Mono", monospace;
